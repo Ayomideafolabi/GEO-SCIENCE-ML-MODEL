@@ -1,0 +1,22 @@
+---
+title: "Clustering Project"
+author: "Ayomide Afolabi"
+date: "11/25/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r data_processing_and_cleaning, echo=TRUE}
+setwd("~/GitHub/GEO-SCIENCE-ML-MODEL")
+Sterols <- read.csv(file="Sterols.csv",sep=",")
+rownames(Sterols) <- make.names(Sterols[,1],unique=TRUE)
+Sterols <- Sterols[,-1]
+Sterols <- as.data.frame(Sterols)
+Sterols[is.na(Sterols)] <- 0
+Sterols <- scale(Sterols)
+cor(Sterols)
+View(Sterols)
+```
